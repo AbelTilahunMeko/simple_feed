@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1f4a42fc-5f6e-4b1f-8e0a-062794d41543" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../android/app/src/main/kotlin/com/enatalem/enat_alem/Application.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../android/app/src/main/res/values/string.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../android/settings_aar.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../assets/images/logowhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/bloc/user_bloc.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/location_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/name_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/picture_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/street_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/user_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/model/user_response_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/repository/user_api_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/repository/user_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bloc_with_dio/lib/ui/user_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../enatlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-1 (2)-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-1 (2)-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-1 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ios/iPhonMx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ios/iphonmxs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../key.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lib/pages/how_to_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lib/pages/subscription_payemnt.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lib/services/image_crop_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lib/widgets/fact_and_question_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lib/widgets/whats_new_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/auth/firebase_auth_repo.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/bloc/bloc.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/bloc/bloc_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/config/constants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/model/all_feeds_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/model/feed_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/model/user_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/pages/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/pages/sign_in_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/pages/verification_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/repository/feed_api_repoository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/repository/repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/repository/user_api_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/widgets/progress_dialog.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/widgets/snackbar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/Assets.xcassets/LaunchImage.imageset/launcher_image-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../../ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/ad_post.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/ad_post.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/blocked_user_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/blocked_user_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/category_filter_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/category_filter_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/edit_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/edit_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/pages/phone_authentication.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/pages/phone_authentication.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/services/user_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/services/user_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/widgets/category/category_selection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/widgets/category/category_selection.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/widgets/home/appbar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/widgets/home/appbar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lib/widgets/home/drawer_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/widgets/home/drawer_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="5.1_WVGA_API_28" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/google-services.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1202" />
+    <option name="height" value="988" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="beladocom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="beladocom" type="462c0819:PsiDirectoryNode" />
+              <item name="simple_feed_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="flutter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="flutter" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f4a42fc-5f6e-4b1f-8e0a-062794d41543" name="Default Changelist" comment="" />
+      <created>1595769748755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595769748755</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1202" height="988" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32931036" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Build" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Flutter Inspector" />
+      <window_info anchor="right" id="Flutter Outline" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Flutter Performance" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="49" column="1" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

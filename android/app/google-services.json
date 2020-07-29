@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "178163929654",
+    "firebase_url": "https://simple-feed-704cd.firebaseio.com",
+    "project_id": "simple-feed-704cd",
+    "storage_bucket": "simple-feed-704cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178163929654:android:44dc34d5835503bfe9be97",
+        "android_client_info": {
+          "package_name": "com.beladocom.simple_feed_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0f-IP1Xf3lJ0AJl6EWQDpzb-iuZV_Uic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "178163929654-goimpbi1ml492o4kfbrb1ngjtjtf1655.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beladocom.simpleFeedApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178163929654:android:54fce41dc4eb094be9be97",
+        "android_client_info": {
+          "package_name": "com.example.skill_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178163929654-j2ouis97lr2t056srac5ifv9glguah79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.skill_test",
+            "certificate_hash": "7f977e64aebc0ee794908451d6f014b3915b94cc"
+          }
+        },
+        {
+          "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0f-IP1Xf3lJ0AJl6EWQDpzb-iuZV_Uic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "178163929654-goimpbi1ml492o4kfbrb1ngjtjtf1655.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beladocom.simpleFeedApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178163929654:android:b1e854f90bab1fa8e9be97",
+        "android_client_info": {
+          "package_name": "com.gebeyanet.simpleFeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178163929654-q7cc7soi2pekcusn3u3pf84ledfhju44.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gebeyanet.simpleFeed",
+            "certificate_hash": "89a1bc142807c16d4f006a5478b27c62749cb077"
+          }
+        },
+        {
+          "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0f-IP1Xf3lJ0AJl6EWQDpzb-iuZV_Uic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178163929654-oh2vi2tcmbnk6j4ct7j1lnjojvklqinv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "178163929654-goimpbi1ml492o4kfbrb1ngjtjtf1655.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beladocom.simpleFeedApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
