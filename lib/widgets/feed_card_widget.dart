@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_feed_app/bloc/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/config/theme.dart';
 import 'package:simple_feed_app/model/feed_model.dart';
 
 // ignore: must_be_immutable
@@ -69,8 +69,8 @@ class _FeedCardState extends State<FeedCard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(widget.feedModel.user.name.toString(), style: TextStyle(fontWeight: FontWeight.bold, color: CONSTANTS.CodGrayTextColor, fontSize: 18),),
-                  Text("@"+widget.feedModel.user.userName.toString() + " . 49 sec ago", style: TextStyle(color: CONSTANTS.lightGrayTextColor),),
+                  Text(widget.feedModel.user.name.toString(), style: TextStyle(fontWeight: FontWeight.bold, color: Pallet.CodGrayTextColor, fontSize: 18),),
+                  Text("@"+widget.feedModel.user.userName.toString() + " . 49 sec ago", style: TextStyle(color: Pallet.lightGrayTextColor),),
                 ],
               ),
             ),
@@ -85,7 +85,7 @@ class _FeedCardState extends State<FeedCard> {
                       likeCount(true,widget.feedModel.id);
                     },
                   ):IconButton(
-                    icon: Icon(Icons.favorite, color: CONSTANTS.primaryColor,),
+                    icon: Icon(Icons.favorite, color: Pallet.primaryColor,),
                     onPressed: (){
                       likeCount(false, widget.feedModel.id);
                     },
@@ -99,7 +99,7 @@ class _FeedCardState extends State<FeedCard> {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Text(
-            widget.feedModel.caption, style: TextStyle(color: CONSTANTS.lightGrayTextColor, fontSize: 16 ),
+            widget.feedModel.caption, style: TextStyle(color: Pallet.lightGrayTextColor, fontSize: 16 ),
           ),
         )
       ],

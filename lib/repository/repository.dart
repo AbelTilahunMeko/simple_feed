@@ -16,27 +16,26 @@ class Repository {
   UploadFeedApiRepo _apiRepo = UploadFeedApiRepo();
   FeedLikeApiRepo _likeApiRepo = FeedLikeApiRepo();
 
-  Future<UserModel> verifyUser(Map<String, dynamic> data, String token){
-    return _userApiRepo.verifyUser(data, token);
+  Future<UserModel> verifyUser(Map<String, dynamic> data){
+    return _userApiRepo.verifyUser(data);
   }
 
-  Future logoutUser(String token){
-    return _userApiRepo.logoutUser(token);
+  Future logoutUser(){
+    return _userApiRepo.logoutUser();
   }
-  Future<Response> uploadFeed(File file, String token, String caption){
-    return _apiRepo.uploadImage(file, token, caption);
-  }
-
-  Future<AllFeeds> getAllFeeds(String token, String pageNumber){
-//    print("The token is  " + token);
-    return _feedApiRepo.getAllFeeds(token, pageNumber);
+  Future<Response> uploadFeed(File file, String caption){
+    return _apiRepo.uploadImage(file, caption);
   }
 
-  Future likeFeed(String token, String feedId) {
-    return _likeApiRepo.likeFeed(token, feedId);
+  Future<AllFeeds> getAllFeeds(String pageNumber){
+    return _feedApiRepo.getAllFeeds(pageNumber);
+  }
+
+  Future likeFeed( String feedId) {
+    return _likeApiRepo.likeFeed(feedId);
   }
 
   Future unlikeFeed(String token, String feedId){
-    return _likeApiRepo.unlikeFeed(token, feedId);
+    return _likeApiRepo.unlikeFeed(feedId);
   }
 }

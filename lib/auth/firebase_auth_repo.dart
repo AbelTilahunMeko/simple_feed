@@ -1,18 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:logger/logger.dart';
 import 'package:simple_feed_app/bloc/bloc.dart';
 import 'package:simple_feed_app/model/user_model.dart';
 import 'package:simple_feed_app/repository/repository.dart';
 import 'dart:async';
+
+import 'package:simple_feed_app/service/logger.dart';
 
 class FirebaseAuthBloc {
   bool userSignIn = false;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static String verificationId;
   String phoneNumber;
-  Logger logger = Logger();
-  String token;
 
+  String token;
 
   Repository _userRepository = Repository();
   StreamController<UserModel> userAccount = StreamController.broadcast();
@@ -22,22 +22,25 @@ class FirebaseAuthBloc {
   }
 
   logoutUser() {
-    _userRepository.logoutUser(token);
+    _userRepository.logoutUser();
   }
 
-  verifyUser(Map<String, dynamic> data, String token) async {
+  Future getCurrentUserToken() async {
+    FirebaseUser user = await _auth.currentUser();
+    var token = await user.getIdToken();
+    bloc.token = token.token;
+  }
+
+  verifyUser(Map<String, dynamic> data) async {
     userSignIn = true;
-    UserModel userModel = await _userRepository.verifyUser(data, token);
+    UserModel userModel = await _userRepository.verifyUser(data);
     userAccount.sink.add(userModel);
   }
 
-  signOut() {
-    logger.d("The user logged out succesfuly" + token.toString());
-    _auth.signOut().then((value) {
-      logoutUser();
-    }).catchError((e) {
-      logger.d("There is an error " + e);
-    });
+  signOut() async {
+    logger.d("The user logged out succesfuly");
+    await _auth.signOut();
+    logoutUser();
   }
 
   Future sendVerificationCode(String phoneNumber) {
@@ -64,7 +67,7 @@ class FirebaseAuthBloc {
       Map<String, dynamic> verifyBody = {
         'phoneNumber': phoneNumber,
       };
-      verifyUser(verifyBody, token);
+      verifyUser(verifyBody);
     });
   }
 
@@ -102,9 +105,7 @@ class FirebaseAuthBloc {
       var idToken = await authResult.user.getIdToken();
       final tokenOfUser = idToken.token;
       token = tokenOfUser;
-//      logger.d("Succsfull Completed " + token.toString());
-      verifyUser(verifyBody, token);
-      bloc.fetchAllFeeds(pageNumber: "1");
+      verifyUser(verifyBody);
 
       return authResult.user.uid;
     });

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class CONSTANTS{
   //The constant are used through all of the projects.
@@ -9,8 +8,5 @@ class CONSTANTS{
   static const String post =  baseURL+"/v1/posts";
   static const String like =  baseURL+"/v1/posts/like";
   static const String unlike =  baseURL+"/v1/posts/unlike";
-  static const Color primaryColor = Color(0xffE9446A);
-  static const Color CodGrayTextColor = Color(0xff0E0E0E);
-  static const Color lightGrayTextColor = Color(0xff9B9B9B);
 
 }

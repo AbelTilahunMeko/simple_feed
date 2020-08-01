@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_feed_app/bloc/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/config/theme.dart';
 import 'package:simple_feed_app/widgets/snackbar_widget.dart';
 
 class VerificationPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _VerificationPageState extends State<VerificationPage> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: CONSTANTS.CodGrayTextColor,
+            color: Pallet.CodGrayTextColor,
           ),
           onPressed: () {
             widget.backArrowPressed();
@@ -47,13 +47,13 @@ class _VerificationPageState extends State<VerificationPage> {
                     Icon(
                       Icons.verified_user,
                       size: 100,
-                      color: CONSTANTS.primaryColor,
+                      color: Pallet.primaryColor,
                     ),
                     Text(
                       "Verifiy your number",
                       style: TextStyle(
                           fontSize: 21,
-                          color: CONSTANTS.CodGrayTextColor,
+                          color: Pallet.CodGrayTextColor,
                           fontWeight: FontWeight.bold),
                     ),
                     RichText(
@@ -93,7 +93,7 @@ class _VerificationPageState extends State<VerificationPage> {
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 5),
                 width: MediaQuery.of(context).size.width,
                 child: RaisedButton(
-                  color: CONSTANTS.primaryColor,
+                  color: Pallet.primaryColor,
                   child: Text(
                     "Verify",
                     style: TextStyle(color: Colors.white, fontSize: 16),

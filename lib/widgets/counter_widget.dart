@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_feed_app/bloc/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/config/theme.dart';
 
 class CounterWidget extends StatefulWidget {
   final AsyncSnapshot snapshot;
@@ -36,7 +36,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: currentPage == index + 1
-                              ? CONSTANTS.primaryColor
+                              ? Pallet.primaryColor
                               : Colors.transparent),
                       child: Center(
                         child: Text(
@@ -44,7 +44,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                           style: TextStyle(
                               color: currentPage == index + 1
                                   ? Colors.white
-                                  : CONSTANTS.CodGrayTextColor,
+                                  : Pallet.CodGrayTextColor,
                               fontSize: 21),
                         ),
                       ),

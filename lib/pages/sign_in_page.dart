@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:simple_feed_app/bloc/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/config/theme.dart';
 import 'package:simple_feed_app/pages/verification_page.dart';
 import 'package:simple_feed_app/widgets/loading_widget.dart';
 import 'package:simple_feed_app/widgets/snackbar_widget.dart';
@@ -49,14 +49,14 @@ class _SignInPageState extends State<SignInPage> {
                       text: TextSpan(
                           text: "Welcome to",
                           style: TextStyle(
-                              color: CONSTANTS.lightGrayTextColor,
+                              color: Pallet.lightGrayTextColor,
                               fontSize: 23),
                           children: <TextSpan>[
                             TextSpan(
                                 text: " Simple Feed",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: CONSTANTS.CodGrayTextColor)),
+                                    color: Pallet.CodGrayTextColor)),
                           ]),
                     ),
                     Visibility(
@@ -110,7 +110,7 @@ class _SignInPageState extends State<SignInPage> {
                           EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                       width: MediaQuery.of(context).size.width,
                       child: RaisedButton(
-                        color: CONSTANTS.primaryColor,
+                        color: Pallet.primaryColor,
                         child: Text(
                           "Sign In",
                           style: TextStyle(color: Colors.white, fontSize: 16),
