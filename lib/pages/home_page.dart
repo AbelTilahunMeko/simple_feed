@@ -120,10 +120,6 @@ class _HomePageState extends State<HomePage> {
                           showLoading = true;
                         });
                         fetchNextPage(snapshot.data.pages);
-                      } else {
-                        setState(() {
-                          showLoading = false;
-                        });
                       }
                     });
                     if (snapshot.data.feedModel.length != 0) {
@@ -168,6 +164,7 @@ class _HomePageState extends State<HomePage> {
                       Text("Done"),
                     ];
                     break;
+
                 }
               }
               return Column(

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:simple_feed_app/auth/firebase_auth_repo.dart';
 import 'package:simple_feed_app/bloc/pick_image_bloc.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
@@ -28,43 +29,38 @@ class BlocIn with FirebaseAuthBloc, PickImageWithBloc {
     _uploadCompletedController.close();
   }
 
-  uploadFeedToDB(File file, String caption) {
-    _repository.uploadFeed(file, caption).then((value) {
-      if (value != null) {
-        fetchAllFeeds(pageNumber: "1");
-      } else {
-        logger.d("There is an error buddy...");
-      }
-    }).catchError((e) {
+  uploadFeedToDB(File file, String caption) async {
+   Response value = await _repository.uploadFeed(file, caption).catchError((e) {
       logger.d("There is an error " + e.toString());
     });
+
+   if (value != null) {
+     fetchAllFeeds(pageNumber: "1");
+   } else {
+     logger.d("There is an error buddy...");
+   }
   }
 
-  likeFeed(String feedId) {
-    _repository.likeFeed(feedId).then((value) {
-      if (value != null) {
-        logger.d("I have succesfully updated it" + value.toString());
-      }
-    }).catchError((e) {
-      logger.d("There is an error " + e.toString());
-    });
+  likeFeed(String feedId) async {
+   var value = await _repository.likeFeed(feedId);
+   if (value != null) {
+     logger.d("I have succesfully updated it" + value.toString());
+   }
   }
 
-  dislikeFeed(String feedId) {
-    _repository.unlikeFeed(token, feedId).then((value) {
-      if (value != null) {
-        logger.d("I have succesfully updated it" + value.toString());
-      }
-    }).catchError((e) {
-      logger.d("There is an error " + e.toString());
-    });
+  dislikeFeed(String feedId) async {
+   var value = await _repository.unlikeFeed(token, feedId);
+   if (value != null) {
+     logger.d("I have succesfully updated it" + value.toString());
+   }
   }
 
   //This method gets the image and adds it to the sink so that the ui can use it.
-  pickImage() {
-    getImage().then((file) {
-      _pickImageStreamController.sink.add(file);
-    });
+  pickImage() async {
+   File file = await getImage();
+   if(file!=null){
+     _pickImageStreamController.sink.add(file);
+   }
   }
 
   // Used to fetch all feeds. It has optional argument.

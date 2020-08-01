@@ -54,10 +54,9 @@ class FirebaseAuthBloc {
         codeAutoRetrievalTimeout: _phoneCodeRetrievalTimeOut);
   }
 
-  _verificationCompleted(AuthCredential authCredential) {
-    _auth
-        .signInWithCredential(authCredential)
-        .then((AuthResult authResult) async {
+  _verificationCompleted(AuthCredential authCredential) async {
+    AuthResult authResult = await _auth.signInWithCredential(authCredential);
+    if (authResult != null) {
       var idToken = await authResult.user.getIdToken();
       final tokenOfUser = idToken.token;
       token = tokenOfUser;
@@ -68,7 +67,7 @@ class FirebaseAuthBloc {
         'phoneNumber': phoneNumber,
       };
       verifyUser(verifyBody);
-    });
+    }
   }
 
   _verificationFailed(AuthException authException) {
@@ -99,15 +98,12 @@ class FirebaseAuthBloc {
       'phoneNumber': phoneNumber,
     };
 
-    return await _auth
-        .signInWithCredential(credential)
-        .then((AuthResult authResult) async {
+    AuthResult authResult = await _auth.signInWithCredential(credential);
+    if (authResult != null) {
       var idToken = await authResult.user.getIdToken();
       final tokenOfUser = idToken.token;
       token = tokenOfUser;
       verifyUser(verifyBody);
-
-      return authResult.user.uid;
-    });
+    }
   }
 }
