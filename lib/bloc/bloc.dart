@@ -6,7 +6,7 @@ import 'package:simple_feed_app/auth/firebase_auth_repo.dart';
 import 'package:simple_feed_app/bloc/pick_image_bloc.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/repository/repository.dart';
-import 'package:simple_feed_app/service/logger.dart';
+import 'package:simple_feed_app/util/logger.dart';
 
 //All the bloc is connected with the other.
 class BlocIn with FirebaseAuthBloc, PickImageWithBloc {

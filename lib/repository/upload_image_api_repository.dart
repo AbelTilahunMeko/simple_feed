@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/service/dio_configration.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:simple_feed_app/service/logger.dart';
+import 'package:simple_feed_app/util//logger.dart';
+import 'package:simple_feed_app/util/dio_provider.dart';
 
 
 class UploadFeedApiRepo {
@@ -18,7 +18,7 @@ class UploadFeedApiRepo {
     });
     Response response;
     try {
-      response = await dio.getDio().post(CONSTANTS.post, data: formData);
+      response = await dio.post(CONSTANTS.post, data: formData);
     } catch (error) {
       response = null;
     }

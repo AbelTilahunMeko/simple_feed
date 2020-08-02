@@ -4,7 +4,8 @@ import 'package:simple_feed_app/model/user_model.dart';
 import 'package:simple_feed_app/repository/repository.dart';
 import 'dart:async';
 
-import 'package:simple_feed_app/service/logger.dart';
+import 'package:simple_feed_app/util/logger.dart';
+
 
 class FirebaseAuthBloc {
   bool userSignIn = false;
@@ -25,10 +26,11 @@ class FirebaseAuthBloc {
     _userRepository.logoutUser();
   }
 
-  Future getCurrentUserToken() async {
+  Future<String> getCurrentUserToken() async {
     FirebaseUser user = await _auth.currentUser();
     var token = await user.getIdToken();
     bloc.token = token.token;
+    return token.token;
   }
 
   verifyUser(Map<String, dynamic> data) async {
@@ -38,7 +40,7 @@ class FirebaseAuthBloc {
   }
 
   signOut() async {
-    logger.d("The user logged out succesfuly");
+    logger.d("The user logged out succesfuly" + token);
     await _auth.signOut();
     logoutUser();
   }
