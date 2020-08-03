@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/feed_model.dart';
 
@@ -34,10 +34,10 @@ class _FeedCardState extends State<FeedCard> {
     setState(() {
       if(typeAdd){
         numberOfLikes +=1;
-        bloc.likeFeed(feedId);
+        FeedBloc.instance.likeFeed(feedId);
       }else{
         numberOfLikes -= 1;
-        bloc.dislikeFeed(feedId);
+        FeedBloc.instance.dislikeFeed(feedId);
       }
     });
 

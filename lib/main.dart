@@ -28,16 +28,14 @@ class MyApp extends StatelessWidget {
   final MaterialColor _materialColor = MaterialColor(0xffE9446A, color);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: _materialColor,
-          primaryColor: _materialColor,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: _materialColor,
+        primaryColor: _materialColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

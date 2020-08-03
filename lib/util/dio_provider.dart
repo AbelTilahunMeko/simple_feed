@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/util/logger.dart';
 
 class DioProvider {
   final Dio dio = Dio();

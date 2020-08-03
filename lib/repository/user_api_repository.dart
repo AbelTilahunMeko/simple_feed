@@ -17,8 +17,8 @@ class UserApiRepo{
       Response response = await _dio.post(CONSTANTS.verifyAccount, data: dataOfUser);
       _logger.d("Succesfully got the response " + response.data.toString());
       return UserModel.fromJson(response.data);
-    }catch (error, stacktrace){
-      _logger.d("Exception occured: $error stackTrace: $stacktrace");
+    }catch (error){
+      _logger.d("Exception occured: $error");
       return UserModel.withError("$error");
     }
   }

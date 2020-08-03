@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/feed/bloc.dart';
+import 'package:simple_feed_app/bloc/pick_image_bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/widgets/loading_widget.dart';
 import 'package:simple_feed_app/widgets/snackbar_widget.dart';
@@ -40,14 +41,16 @@ class _AddFeedPageState extends State<AddFeedPage> {
           Container(
             margin: EdgeInsets.only(right: 20, top: 10, bottom: 10),
             child: RaisedButton(
-              onPressed: () {
+              onPressed: () async {
                 FocusScope.of(context).requestFocus(FocusNode());
                 if (_captionController.text.isEmpty || _imageFile == null) {
                   SnackBarWidget().displaySnackBar(
                       context, _scaffoldKey, "Please feel the required feild.");
                 } else {
-                  bloc.uploadCompleteController.sink.add(true);
-                  bloc.uploadFeedToDB(_imageFile, _captionController.text);
+//                  FeedBloc.instance.uploadCompleteController.sink.add(true);
+                  SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Uploading");
+                  await FeedBloc.instance.uploadFeedToDB(_imageFile, _captionController.text);
+                  _scaffoldKey.currentState.hideCurrentSnackBar();
                   _captionController.clear();
                 }
               },
@@ -60,85 +63,66 @@ class _AddFeedPageState extends State<AddFeedPage> {
           )
         ],
       ),
-      body: StreamBuilder(
-        stream: bloc.uploadCompleteController.stream,
-        builder: (context, snapshot) {
-          return snapshot.data == null || snapshot.data == false
-              ? ListView(
-                  children: <Widget>[
-                    Visibility(
-                        visible:
-                            snapshot.data != null && snapshot.data == false,
-                        child: Center(
-                          child: Text(
-                            "You have sucessfully uploaded your Feed\n Go Back",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        )),
-                    StreamBuilder(
-                      stream: bloc.pickImageController.stream,
-                      builder: (context, AsyncSnapshot<File> snapshot) {
-                        if (snapshot.data != null) {
-                          _imageFile = File(snapshot.data.path);
+      body: ListView(
+        children: <Widget>[
+          StreamBuilder(
+            stream: PickImageWithBloc.instance.pickImageController.stream,
+            builder: (context, AsyncSnapshot<File> snapshot) {
+              if (snapshot.data != null) {
+                _imageFile = File(snapshot.data.path);
 
-                          return Stack(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height / 3,
-                                child: Image.file(File(snapshot.data.path)),
-                              ),
-                              Align(
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.camera_alt,
-                                    color: CONSTANTS.primaryColor,
-                                  ),
-                                  onPressed: () {
-                                    bloc.pickImage();
-                                  },
-                                ),
-                                alignment: Alignment.topLeft,
-                              )
-                            ],
-                          );
-                        }
-                        {
-                          return Container(
-                            height: _imageLoaded
-                                ? 100
-                                : MediaQuery.of(context).size.height / 4,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.camera_alt,
-                                color: CONSTANTS.primaryColor,
-                              ),
-                              onPressed: () {
-                                bloc.pickImage();
-                              },
-                            ),
-                          );
-                        }
-                      },
-                    ),
+                return Stack(
+                  children: <Widget>[
                     Container(
+                      width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 3,
-                      child: Card(
-                        child: TextFormField(
-                          controller: _captionController,
-                          maxLines: 10,
-                          decoration:
-                              InputDecoration(hintText: "Whats happening?"),
+                      child: Image.file(File(snapshot.data.path)),
+                    ),
+                    Align(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.camera_alt,
+                          color: CONSTANTS.primaryColor,
                         ),
+                        onPressed: () {
+                          PickImageWithBloc.instance.getImage();
+                        },
                       ),
+                      alignment: Alignment.topLeft,
                     )
                   ],
-                )
-              : LoadingWidget();
-        },
+                );
+              }
+              {
+                return Container(
+                  height: _imageLoaded
+                      ? 100
+                      : MediaQuery.of(context).size.height / 4,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.camera_alt,
+                      color: CONSTANTS.primaryColor,
+                    ),
+                    onPressed: () {
+                      PickImageWithBloc.instance.getImage();
+                    },
+                  ),
+                );
+              }
+            },
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height / 3,
+            child: Card(
+              child: TextFormField(
+                controller: _captionController,
+                maxLines: 10,
+                decoration:
+                InputDecoration(hintText: "Whats happening?"),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

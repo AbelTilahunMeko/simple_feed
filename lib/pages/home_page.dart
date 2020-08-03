@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
+import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/pages/add_feed_page.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       1; //The current page is always on the first page. Starting position.
   @override
   void initState() {
-    bloc.fetchAllFeeds();
+    FeedBloc.instance.fetchAllFeeds();
     super.initState();
   }
 
@@ -50,17 +51,17 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: Icon(Icons.exit_to_app, color: CONSTANTS.CodGrayTextColor),
               onPressed: () {
-                bloc.signOut();
+                FirebaseAuthBloc.instance.signOut();
               },
             )
           ],
         ),
         body: RefreshIndicator(
           onRefresh:
-              bloc.fetchAllFeeds, // This is called after the being pulled down
+          FeedBloc.instance.fetchAllFeeds, // This is called after the being pulled down
           semanticsLabel: "Pull down to refershe Feeds",
           child: StreamBuilder(
-            stream: bloc.allFeedsStreamController.stream,
+            stream: FeedBloc.instance.allFeedsStreamController.stream,
             builder: (BuildContext context, AsyncSnapshot<AllFeeds> snapshot) {
               List<Widget> children;
               if (snapshot.hasError) {

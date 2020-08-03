@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/pages/verification_page.dart';
 import 'package:simple_feed_app/widgets/loading_widget.dart';
@@ -21,20 +21,20 @@ class _SignInPageState extends State<SignInPage> {
   bool _errorHappened = false;
 
   backArrowPressed() {
-    bloc.codeSentStreamController.sink
+    FirebaseAuthBloc.instance.codeSentStreamController.sink
         .add(false); //TODO remember to change this to false
   }
 
   @override
   void initState(){
     super.initState();
-    bloc.codeSentStreamController.sink.add(true);
+    FirebaseAuthBloc.instance.codeSentStreamController.sink.add(true);
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: bloc.codeSentStreamController.stream,
+      stream: FirebaseAuthBloc.instance.codeSentStreamController.stream,
       builder: (context, snapshot) {
 //        logger.d("The data of the stream is " + snapshot.data.toString());
         return snapshot.data == null || !snapshot.data
@@ -145,8 +145,8 @@ class _SignInPageState extends State<SignInPage> {
                             setState(() {
                               showLoading = true;
                             });
-                            bloc.phoneNumber = "+" + phoneNumber;
-                            bloc.sendVerificationCode("+" + phoneNumber);
+                            FirebaseAuthBloc.instance.phoneNumber = "+" + phoneNumber;
+                            FirebaseAuthBloc.instance.sendVerificationCode("+" + phoneNumber);
                           }
 
                         },

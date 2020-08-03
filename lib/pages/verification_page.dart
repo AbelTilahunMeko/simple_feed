@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/widgets/snackbar_widget.dart';
 
@@ -64,7 +64,7 @@ class _VerificationPageState extends State<VerificationPage> {
                           style: TextStyle(color: Colors.black),
                           children: <TextSpan>[
                             TextSpan(
-                                text: bloc.phoneNumber.toString(),
+                                text: FirebaseAuthBloc.instance.phoneNumber.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold))
                           ]),
                     ),
@@ -115,7 +115,7 @@ class _VerificationPageState extends State<VerificationPage> {
                       FocusScope.of(context).requestFocus(FocusNode());
 //                  ProgressDialog().createDialogProcess(context);
 
-                      bloc.verifyCode(_verificationCodeFieldController.text);
+                      FirebaseAuthBloc.instance.verifyCode(_verificationCodeFieldController.text);
                     }
 //              bloc.verifyCode(code);
                   },

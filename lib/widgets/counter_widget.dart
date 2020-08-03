@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
+import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 
 class CounterWidget extends StatefulWidget {
@@ -28,7 +28,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                       setState(() {
                         currentPage = index + 1;
                       });
-                      bloc.fetchAllFeeds(pageNumber: currentPage.toString());
+                      FeedBloc.instance.fetchAllFeeds(pageNumber: currentPage.toString());
                     },
                     child: Container(
                       height: 45,

@@ -1,28 +1,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
-import 'package:simple_feed_app/bloc/bloc.dart';
 import 'package:simple_feed_app/model/user_model.dart';
 import 'package:simple_feed_app/repository/repository.dart';
 import 'dart:async';
 
 import 'package:simple_feed_app/util/dio_provider.dart';
+import 'package:simple_feed_app/util/logger.dart';
 
 class FirebaseAuthBloc {
+  static FirebaseAuthBloc instance = FirebaseAuthBloc._();
+
+  FirebaseAuthBloc._();
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static String verificationId;
   String phoneNumber;
-  Logger logger = Logger();
+
+
   Future<String> get token async {
     var user = await FirebaseAuth.instance.currentUser();
     var idToken = await user.getIdToken();
     return idToken.token;
   }
+  StreamController<bool> _codeSentStreamController = StreamController
+      .broadcast();
+
+  StreamController<bool> get codeSentStreamController =>
+      _codeSentStreamController;
 
   Repository _userRepository = Repository();
   StreamController<UserModel> userAccount = StreamController.broadcast();
 
   void dispose() {
     userAccount.close();
+    _codeSentStreamController.close();
   }
 
   logoutUser() async {
@@ -69,7 +80,7 @@ class FirebaseAuthBloc {
 
   void _verificationCodeSent(String verificationIdIn, [code]) {
     logger.d("CODE SENT ");
-    bloc.codeSentStreamController.sink.add(true);
+    codeSentStreamController.sink.add(true);
     verificationId = verificationIdIn;
   }
 
