@@ -8,17 +8,16 @@ class DioProvider {
   static final DioProvider instance = DioProvider._();
   DioProvider._();
 
-  Future<String> _getCurrentUserToken() async {
+  Future<String> get _getCurrentUserToken async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     var tokenId = await user.getIdToken();
-    logger.d("I was called to get token" + tokenId.token.toString());
     return tokenId.token;
   }
 
   init() async {
 //    dio.options.baseUrl = CONSTANTS.baseURL;
     dio.options.headers['content-type'] = 'application/json';
-    dio.options.headers["authorization"] = "Bearer ${await _getCurrentUserToken()}";
+    dio.options.headers["authorization"] = "Bearer ${await _getCurrentUserToken}";
     return true;
   }
 }
