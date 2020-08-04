@@ -12,14 +12,8 @@ class FeedBloc {
   FeedBloc._();
 
   static final FeedApiRepo _feedApiRepo = FeedApiRepo();
-  static final FeedLikeApiRepo _feedLikeApiRepo = FeedLikeApiRepo();
-//  static final StreamController<bool> _uploadCompletedController =
-//      StreamController.broadcast();
-  static StreamController<AllFeeds> _allFeedsStreamController =
+  static final StreamController<AllFeeds> _allFeedsStreamController =
       StreamController.broadcast();
-
-//  StreamController<bool> get uploadCompleteController =>
-//      _uploadCompletedController;
   StreamController<AllFeeds> get allFeedsStreamController =>
       _allFeedsStreamController;
 
@@ -36,7 +30,6 @@ class FeedBloc {
       pageNumber = "1";
     }
     AllFeeds allFeeds = await _feedApiRepo.getAllFeeds(pageNumber);
-
     _allFeedsStreamController.sink.add(allFeeds);
 //    _uploadCompletedController.sink.add(false);
   }
@@ -52,17 +45,5 @@ class FeedBloc {
     return true;
   }
 
-  likeFeed(String feedId) async {
-    var value = await _feedLikeApiRepo.likeFeed(feedId);
-    if (value != null) {
-      logger.d("I have succesfully updated it" + value.toString());
-    }
-  }
 
-  dislikeFeed(String feedId) async {
-    var value = await _feedLikeApiRepo.unlikeFeed(feedId);
-    if (value != null) {
-      logger.d("I have succesfully updated it" + value.toString());
-    }
-  }
 }
