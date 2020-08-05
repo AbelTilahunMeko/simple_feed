@@ -1,24 +1,17 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-class PickImageWithBloc {
-  static PickImageWithBloc instance = PickImageWithBloc._();
+class PickImageWithBloc extends Cubit<File> {
 
-  PickImageWithBloc._();
+
+  PickImageWithBloc([File file]):super(file);
 
   final picker = ImagePicker();
   File _image;
 
-  static final StreamController<File> _pickImageStreamController = StreamController
-      .broadcast();
-  StreamController<File> get pickImageController => _pickImageStreamController;
-
-  void dispose() {
-    _pickImageStreamController.close();
-    instance = PickImageWithBloc._();
-  }
 
   Future<File> getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery, maxWidth: 400, maxHeight: 400, imageQuality: 50);
@@ -27,7 +20,7 @@ class PickImageWithBloc {
     }else{
       _image = null;
     }
-    _pickImageStreamController.sink.add(_image);
+    emit(_image);
 
     return _image;
   }

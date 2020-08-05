@@ -17,10 +17,10 @@ class AddFeedPage extends StatefulWidget {
 class _AddFeedPageState extends State<AddFeedPage> {
   bool _imageLoaded = false;
   File _imageFile;
-  Logger _logger = Logger();
   TextEditingController _captionController = TextEditingController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  FeedBloc feedBloc = FeedBloc();
+  PickImageWithBloc _imageWithBloc = PickImageWithBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +48,9 @@ class _AddFeedPageState extends State<AddFeedPage> {
                       context, _scaffoldKey, "Please feel the required feild.");
                 } else {
                   SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Uploading");
-                  await FeedBloc.instance.uploadFeedToDB(_imageFile, _captionController.text);
+                  await feedBloc.uploadFeedToDB(_imageFile, _captionController.text);
                   _scaffoldKey.currentState.hideCurrentSnackBar();
-                  setState(() {
-                    _imageFile = null;
-                  });
+
                   SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Succesfully Done");
                   _captionController.clear();
                 }
@@ -69,7 +67,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
       body: ListView(
         children: <Widget>[
           StreamBuilder(
-            stream: PickImageWithBloc.instance.pickImageController.stream,
+            stream: _imageWithBloc,
             builder: (context, AsyncSnapshot<File> snapshot) {
               if (snapshot.data != null) {
                 _imageFile = File(snapshot.data.path);
@@ -88,7 +86,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
                           color: CONSTANTS.primaryColor,
                         ),
                         onPressed: () {
-                          PickImageWithBloc.instance.getImage();
+                          _imageWithBloc.getImage();
                         },
                       ),
                       alignment: Alignment.topLeft,
@@ -107,7 +105,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
                       color: CONSTANTS.primaryColor,
                     ),
                     onPressed: () {
-                      PickImageWithBloc.instance.getImage();
+                      _imageWithBloc.getImage();
                     },
                   ),
                 );

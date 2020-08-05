@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/bloc/post/bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
@@ -87,13 +88,12 @@ class _FeedCardState extends State<FeedCard> {
             ),
             Expanded(
               flex: 1,
-              child: StreamBuilder(
-                stream: postBloc.singleFeedsStreamController.stream,
-                builder: (context, AsyncSnapshot<FeedModel> snapshot) {
-                  if(ConnectionState.active == snapshot.connectionState){
+              child: BlocBuilder(
+                cubit: postBloc,
+                builder: (context, FeedModel snapshot) {
                   return Row(
                     children: <Widget>[
-                      !snapshot.data.isLiked?
+                      !snapshot.isLiked?
                       IconButton(
                         icon: Icon(Icons.favorite_border),
                         onPressed: (){
@@ -105,12 +105,9 @@ class _FeedCardState extends State<FeedCard> {
                           postBloc.dislikeFeed();
                         },
                       ),
-                      Text(snapshot.data.likes.toString(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+                      Text(snapshot.likes.toString(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
                     ],
                   );
-                  }else{
-                    return Container();
-                  }
                 },
               ),
             ),
