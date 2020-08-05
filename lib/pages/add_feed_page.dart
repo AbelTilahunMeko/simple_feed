@@ -47,10 +47,13 @@ class _AddFeedPageState extends State<AddFeedPage> {
                   SnackBarWidget().displaySnackBar(
                       context, _scaffoldKey, "Please feel the required feild.");
                 } else {
-//                  FeedBloc.instance.uploadCompleteController.sink.add(true);
                   SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Uploading");
                   await FeedBloc.instance.uploadFeedToDB(_imageFile, _captionController.text);
                   _scaffoldKey.currentState.hideCurrentSnackBar();
+                  setState(() {
+                    _imageFile = null;
+                  });
+                  SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Succesfully Done");
                   _captionController.clear();
                 }
               },

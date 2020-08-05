@@ -91,10 +91,6 @@ class _FeedCardState extends State<FeedCard> {
                 stream: postBloc.singleFeedsStreamController.stream,
                 builder: (context, AsyncSnapshot<FeedModel> snapshot) {
                   if(ConnectionState.active == snapshot.connectionState){
-                    logger.d("The snapshot of like " +
-                        snapshot.data.isLiked.toString() +
-                        "\nThe number of likes" +
-                        snapshot.data.likes.toString());
                   return Row(
                     children: <Widget>[
                       !snapshot.data.isLiked?

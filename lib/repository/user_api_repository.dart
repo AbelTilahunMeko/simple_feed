@@ -2,36 +2,29 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
+import 'package:simple_feed_app/util/dio_provider.dart';
+import 'package:simple_feed_app/util/logger.dart';
 
 class UserApiRepo{
-  final Dio _dio = Dio();
-  Logger _logger = Logger();
 
-  Future<UserModel> verifyUser(dataOfUser, token) async {
-    String tokenIn = "Bearer $token";
-//    _logger.d(tokenIn);
-    _dio.options.headers['content-Type'] = 'application/json';
-    _dio.options.headers["authorization"] = tokenIn;
-
+  Future<UserModel> verifyUser(dataOfUser) async {
     try{
-      Response response = await _dio.post(CONSTANTS.verifyAccount, data: dataOfUser);
-      _logger.d("Succesfully got the response " + response.data.toString());
+      Response response = await dio.post(CONSTANTS.verifyAccount, data: dataOfUser);
+      logger.d("Succesfully got the response " + response.data.toString());
       return UserModel.fromJson(response.data);
     }catch (error){
-      _logger.d("Exception occured: $error");
+      logger.d("Exception occured: $error");
       return UserModel.withError("$error");
     }
   }
 
-  Future logoutUser(token) async {
+  Future logoutUser() async {
     try{
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers["authorization"] = "Bearer $token";
-      Response response = await _dio.post(CONSTANTS.logout);
-      _logger.d("Succesfully logged out");
+      Response response = await dio.post(CONSTANTS.logout);
+      logger.d("Succesfully logged out");
       return response.data;
     }catch(error){
-      _logger.d("There is an error on logout " + error.toString());
+      logger.d("There is an error on logout " + error.toString());
 
     }
   }

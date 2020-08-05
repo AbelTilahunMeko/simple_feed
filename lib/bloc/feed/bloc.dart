@@ -23,8 +23,6 @@ class FeedBloc {
     instance = FeedBloc._();
   }
 
-  // Used to fetch all feeds. It has optional argument.
-  // Because on refresh we can't call method we pass reference of the method
   Future fetchAllFeeds({String pageNumber}) async {
     if (pageNumber == "") {
       pageNumber = "1";

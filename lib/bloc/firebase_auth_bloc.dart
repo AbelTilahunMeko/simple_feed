@@ -16,14 +16,14 @@ class FirebaseAuthBloc {
   static String verificationId;
   String phoneNumber;
 
-
   Future<String> get token async {
     var user = await FirebaseAuth.instance.currentUser();
     var idToken = await user.getIdToken();
     return idToken.token;
   }
-  StreamController<bool> _codeSentStreamController = StreamController
-      .broadcast();
+
+  StreamController<bool> _codeSentStreamController =
+      StreamController.broadcast();
 
   StreamController<bool> get codeSentStreamController =>
       _codeSentStreamController;
@@ -36,25 +36,21 @@ class FirebaseAuthBloc {
     _codeSentStreamController.close();
   }
 
-  logoutUser() async {
-    _userRepository.logoutUser(await token);
+  Future logoutUser() async {
+    _userRepository.logoutUser();
   }
 
   verifyUser() async {
     Map<String, dynamic> data = {
       'phoneNumber': phoneNumber,
     };
-    UserModel userModel = await _userRepository.verifyUser(data, await token);
+    UserModel userModel = await _userRepository.verifyUser(data);
     userAccount.sink.add(userModel);
   }
 
-  signOut() {
-    logger.d("The user logged out succesfuly" + token.toString());
-    _auth.signOut().then((value) {
-      logoutUser();
-    }).catchError((e) {
-      logger.d("There is an error " + e);
-    });
+  signOut() async {
+    await logoutUser();
+    await _auth.signOut();
   }
 
   Future sendVerificationCode(String phoneNumber) {

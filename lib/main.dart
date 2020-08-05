@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_feed_app/bloc/bloc_provider.dart';
 import 'package:simple_feed_app/pages/home_page.dart';
 import 'package:simple_feed_app/pages/sign_in_page.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
