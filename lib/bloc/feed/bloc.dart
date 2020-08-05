@@ -23,13 +23,16 @@ class FeedBloc {
     instance = FeedBloc._();
   }
 
-  Future fetchAllFeeds({String pageNumber}) async {
+  Future fetchAllFeeds({String pageNumber,  bool initialLoad:true}) async {
     if (pageNumber == "") {
       pageNumber = "1";
     }
     AllFeeds allFeeds = await _feedApiRepo.getAllFeeds(pageNumber);
-    _allFeedsStreamController.sink.add(allFeeds);
-//    _uploadCompletedController.sink.add(false);
+    if(initialLoad){
+      _allFeedsStreamController.sink.add(allFeeds);
+    }else{
+      return allFeeds;
+    }
   }
 
   Future uploadFeedToDB(File file, String caption) async {

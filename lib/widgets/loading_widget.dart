@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget{
+  final double height;
+  LoadingWidget({this.height});
+
   Widget _buildLoading(context){
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -9,7 +12,7 @@ class LoadingWidget extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("assets/loading_gif.gif", height: 170,)
+            Image.asset("assets/loading_gif.gif", height: height==null?170:height,)
           ],
         ),
       ),
