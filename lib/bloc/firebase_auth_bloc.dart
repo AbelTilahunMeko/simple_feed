@@ -53,7 +53,7 @@ class FirebaseAuthBloc {
     await _auth.signOut();
   }
 
-  Future sendVerificationCode(String phoneNumber) {
+  Future sendVerificationCode() {
 //    logger.d("The phone number " + phoneNumber);
     return _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -65,9 +65,13 @@ class FirebaseAuthBloc {
   }
 
   _verificationCompleted(AuthCredential authCredential) async {
-    await _auth.signInWithCredential(authCredential);
-    await DioProvider.instance.init();
-    verifyUser();
+    try {
+      await _auth.signInWithCredential(authCredential);
+      await DioProvider.instance.init();
+      verifyUser();
+    } catch (e) {
+      logger.d(e);
+    }
   }
 
   _verificationFailed(AuthException authException) {
@@ -88,9 +92,9 @@ class FirebaseAuthBloc {
     return _auth.currentUser();
   }
 
-  verifyCode(String code) async {
+  Future verifyCode(String code) async {
     final AuthCredential credential = PhoneAuthProvider.getCredential(
         verificationId: verificationId, smsCode: code);
-    _verificationCompleted(credential);
+    return _verificationCompleted(credential);
   }
 }

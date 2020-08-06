@@ -8,6 +8,7 @@ import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class FeedBloc extends Cubit<AllFeeds> {
+  File imageFile;
 
   FeedBloc({AllFeeds allFeeds}):super(allFeeds);
 
@@ -17,6 +18,7 @@ class FeedBloc extends Cubit<AllFeeds> {
     if (pageNumber == "") {
       pageNumber = "1";
     }
+
     AllFeeds allFeeds = await _feedApiRepo.getAllFeeds(pageNumber);
     if(initialLoad){
       emit(allFeeds);
@@ -25,9 +27,9 @@ class FeedBloc extends Cubit<AllFeeds> {
     }
   }
 
-  Future uploadFeedToDB(File file, String caption) async {
+  Future uploadFeedToDB(String caption) async {
     var value =
-        await _feedApiRepo.uploadFeedToDatabase(file, caption).catchError((e) {
+        await _feedApiRepo.uploadFeedToDatabase(imageFile, caption).catchError((e) {
       logger.d("There is an error " + e.toString());
     });
     if (value != null) {

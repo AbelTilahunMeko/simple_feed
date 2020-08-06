@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
+import 'package:simple_feed_app/bloc/forms/verification_form/verification_form.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/widgets/snackbar_widget.dart';
 
@@ -13,9 +15,14 @@ class VerificationPage extends StatefulWidget {
 }
 
 class _VerificationPageState extends State<VerificationPage> {
-  TextEditingController _verificationCodeFieldController =
-      TextEditingController();
+  final bloc = VerificationFormBloc();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void dispose(){
+    bloc.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,10 +88,10 @@ class _VerificationPageState extends State<VerificationPage> {
               ),
               Container(
                 margin: EdgeInsets.only(left: 40, right: 40, bottom: 10),
-                child: TextFormField(
+                child: TextFieldBlocBuilder(
+                  textFieldBloc: bloc.verificationFieldBloc,
                   maxLength: 6,
                   decoration: InputDecoration(hintText: "******"),
-                  controller: _verificationCodeFieldController,
                   keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 22),
                 ),
@@ -99,24 +106,8 @@ class _VerificationPageState extends State<VerificationPage> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   onPressed: () {
-                    if (_verificationCodeFieldController.text.isEmpty) {
                       FocusScope.of(context).requestFocus(FocusNode());
-                      SnackBarWidget().displaySnackBar(
-                          context, _scaffoldKey, "Please input verifiction code");
-                    } else if (_verificationCodeFieldController.text.length < 6) {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      SnackBarWidget().displaySnackBar(
-                          context, _scaffoldKey, "Verifiction code too short.");
-                    } else if (_verificationCodeFieldController.text.length > 6) {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      SnackBarWidget().displaySnackBar(
-                          context, _scaffoldKey, "Verifiction code too long.");
-                    } else {
-                      FocusScope.of(context).requestFocus(FocusNode());
-//                  ProgressDialog().createDialogProcess(context);
-
-                      FirebaseAuthBloc.instance.verifyCode(_verificationCodeFieldController.text);
-                    }
+                      bloc.submit();
 //              bloc.verifyCode(code);
                   },
                 ),

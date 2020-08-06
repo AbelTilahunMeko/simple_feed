@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:simple_feed_app/bloc/feed/bloc.dart';
+import 'package:simple_feed_app/bloc/forms/post_form/post_form_bloc.dart';
 import 'package:simple_feed_app/bloc/pick_image_bloc.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/widgets/loading_widget.dart';
@@ -17,10 +19,16 @@ class AddFeedPage extends StatefulWidget {
 class _AddFeedPageState extends State<AddFeedPage> {
   bool _imageLoaded = false;
   File _imageFile;
-  TextEditingController _captionController = TextEditingController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  FeedBloc feedBloc = FeedBloc();
   PickImageWithBloc _imageWithBloc = PickImageWithBloc();
+  final bloc = FeedPostFromBloc();
+
+  @override
+  void dispose() {
+    bloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,16 +51,16 @@ class _AddFeedPageState extends State<AddFeedPage> {
             child: RaisedButton(
               onPressed: () async {
                 FocusScope.of(context).requestFocus(FocusNode());
-                if (_captionController.text.isEmpty || _imageFile == null) {
+                if (_imageFile == null) {
                   SnackBarWidget().displaySnackBar(
-                      context, _scaffoldKey, "Please feel the required feild.");
+                      context, _scaffoldKey, "Please attach image");
                 } else {
-                  SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Uploading");
-                  await feedBloc.uploadFeedToDB(_imageFile, _captionController.text);
+                  SnackBarWidget()
+                      .displaySnackBar(context, _scaffoldKey, "Uploading");
+                  bloc.submit();
                   _scaffoldKey.currentState.hideCurrentSnackBar();
-
-                  SnackBarWidget().displaySnackBar(context, _scaffoldKey, "Succesfully Done");
-                  _captionController.clear();
+                  SnackBarWidget().displaySnackBar(
+                      context, _scaffoldKey, "Succesfully Done");
                 }
               },
               color: CONSTANTS.primaryColor,
@@ -115,11 +123,10 @@ class _AddFeedPageState extends State<AddFeedPage> {
           Container(
             height: MediaQuery.of(context).size.height / 3,
             child: Card(
-              child: TextFormField(
-                controller: _captionController,
+              child: TextFieldBlocBuilder(
                 maxLines: 10,
-                decoration:
-                InputDecoration(hintText: "Whats happening?"),
+                decoration: InputDecoration(hintText: "Whats happening?"),
+                textFieldBloc: bloc.captionValidator,
               ),
             ),
           )
