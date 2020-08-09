@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
 import 'package:simple_feed_app/bloc/feed/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/commons/feed_card_widget.dart';
+import 'package:simple_feed_app/commons/loading_widget.dart';
+import 'package:simple_feed_app/config/theme.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/pages/add_feed_page.dart';
-import 'package:simple_feed_app/widgets/feed_card_widget.dart';
-import 'package:simple_feed_app/widgets/loading_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void fetchNextPage(int totalNumberOfPages) async {
-    //calling the fetch function when the scroll reaches 0.9(90%)
 
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             size: 38,
           ),
           elevation: 5,
-          backgroundColor: CONSTANTS.primaryColor,
+          backgroundColor: Pallet.primaryColor,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => AddFeedPage()));
@@ -66,13 +65,13 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
           title: Text(
             "Feed",
-            style: TextStyle(color: CONSTANTS.CodGrayTextColor),
+            style: TextStyle(color: Pallet.CodGrayTextColor),
           ),
           backgroundColor: Colors.white,
           centerTitle: true,
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.exit_to_app, color: CONSTANTS.CodGrayTextColor),
+              icon: Icon(Icons.exit_to_app, color: Pallet.CodGrayTextColor),
               onPressed: () {
                 FirebaseAuthBloc.instance.signOut();
               },
@@ -142,41 +141,6 @@ class _HomePageState extends State<HomePage> {
                ];
               }
 
-//              if (snapshot.hasError) {
-//                children = <Widget>[
-//                  Icon(
-//                    Icons.error,
-//                    color: CONSTANTS.primaryColor,
-//                    size: 41,
-//                  ),
-//                  Text(
-//                      "It seems to be there is internal error please contact the team."),
-//                ];
-//              } else {
-//                switch (snapshot.connectionState) {
-//                  case ConnectionState.none:
-//                    children = <Widget>[Text("There is no connection.. ")];
-//                    break;
-//                  case ConnectionState.waiting:
-//                    children = <Widget>[
-//                      //This is the loading of widget.
-//                      Container(
-//                        child: LoadingWidget(),
-//                        margin: EdgeInsets.only(
-//                            top: MediaQuery.of(context).size.height / 4),
-//                      )
-//                    ];
-//                    break;
-//                  case ConnectionState.active:
-//
-//                    break;
-//                  case ConnectionState.done:
-//                    children = <Widget>[
-//                      Text("Done"),
-//                    ];
-//                    break;
-//                }
-//              }
               return Column(
                 children: children,
               );

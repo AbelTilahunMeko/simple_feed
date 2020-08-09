@@ -9,7 +9,4 @@ class CONSTANTS {
   static const String post = "/v1/posts";
   static const String like = "/v1/posts/like";
   static const String unlike = "/v1/posts/unlike";
-  static const Color primaryColor = Color(0xffE9446A);
-  static const Color CodGrayTextColor = Color(0xff0E0E0E);
-  static const Color lightGrayTextColor = Color(0xff9B9B9B);
 }

@@ -3,13 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:logger/logger.dart';
-import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/bloc/forms/post_form/post_form_bloc.dart';
 import 'package:simple_feed_app/bloc/pick_image_bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/widgets/loading_widget.dart';
-import 'package:simple_feed_app/widgets/snackbar_widget.dart';
+import 'package:simple_feed_app/commons/snackbar_widget.dart';
+import 'package:simple_feed_app/config/theme.dart';
 
 class AddFeedPage extends StatefulWidget {
   @override
@@ -42,7 +39,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: CONSTANTS.CodGrayTextColor,
+            color: Pallet.CodGrayTextColor,
           ),
         ),
         actions: <Widget>[
@@ -63,7 +60,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
                       context, _scaffoldKey, "Succesfully Done");
                 }
               },
-              color: CONSTANTS.primaryColor,
+              color: Pallet.primaryColor,
               child: Text(
                 "Post",
                 style: TextStyle(color: Colors.white),
@@ -91,7 +88,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
                       child: IconButton(
                         icon: Icon(
                           Icons.camera_alt,
-                          color: CONSTANTS.primaryColor,
+                          color: Pallet.primaryColor,
                         ),
                         onPressed: () {
                           _imageWithBloc.getImage();
@@ -110,7 +107,7 @@ class _AddFeedPageState extends State<AddFeedPage> {
                   child: IconButton(
                     icon: Icon(
                       Icons.camera_alt,
-                      color: CONSTANTS.primaryColor,
+                      color: Pallet.primaryColor,
                     ),
                     onPressed: () {
                       _imageWithBloc.getImage();

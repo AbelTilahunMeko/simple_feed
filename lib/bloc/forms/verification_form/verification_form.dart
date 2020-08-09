@@ -1,5 +1,7 @@
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:get/get.dart';
 import 'package:simple_feed_app/bloc/forms/verification_form/feild.dart';
+import 'package:simple_feed_app/pages/home_page.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 import '../../firebase_auth_bloc.dart';

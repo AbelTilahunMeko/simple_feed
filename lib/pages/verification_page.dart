@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:simple_feed_app/bloc/firebase_auth_bloc.dart';
 import 'package:simple_feed_app/bloc/forms/verification_form/verification_form.dart';
-import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/widgets/snackbar_widget.dart';
+import 'package:simple_feed_app/config/theme.dart';
 
 class VerificationPage extends StatefulWidget {
-  final Function backArrowPressed;
-
-  const VerificationPage({Key key, this.backArrowPressed}) : super(key: key);
 
   @override
   _VerificationPageState createState() => _VerificationPageState();
@@ -29,19 +25,6 @@ class _VerificationPageState extends State<VerificationPage> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: CONSTANTS.CodGrayTextColor,
-          ),
-          onPressed: () {
-            widget.backArrowPressed();
-          },
-        ),
-      ),
       body: ListView(
         children: <Widget>[
           Column(
@@ -54,13 +37,13 @@ class _VerificationPageState extends State<VerificationPage> {
                     Icon(
                       Icons.verified_user,
                       size: 100,
-                      color: CONSTANTS.primaryColor,
+                      color: Pallet.primaryColor,
                     ),
                     Text(
                       "Verifiy your number",
                       style: TextStyle(
                           fontSize: 21,
-                          color: CONSTANTS.CodGrayTextColor,
+                          color: Pallet.CodGrayTextColor,
                           fontWeight: FontWeight.bold),
                     ),
                     RichText(
@@ -100,7 +83,7 @@ class _VerificationPageState extends State<VerificationPage> {
                 margin: EdgeInsets.symmetric(horizontal: 40, vertical: 5),
                 width: MediaQuery.of(context).size.width,
                 child: RaisedButton(
-                  color: CONSTANTS.primaryColor,
+                  color: Pallet.primaryColor,
                   child: Text(
                     "Verify",
                     style: TextStyle(color: Colors.white, fontSize: 16),

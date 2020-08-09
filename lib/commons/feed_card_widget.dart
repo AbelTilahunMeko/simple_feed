@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_feed_app/bloc/feed/bloc.dart';
 import 'package:simple_feed_app/bloc/post/bloc.dart';
-import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/config/theme.dart';
 import 'package:simple_feed_app/model/feed_model.dart';
-import 'package:simple_feed_app/util/logger.dart';
 
 // ignore: must_be_immutable
 class FeedCard extends StatefulWidget {
@@ -74,14 +72,14 @@ class _FeedCardState extends State<FeedCard> {
                     widget.feedModel.user.name.toString(),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: CONSTANTS.CodGrayTextColor,
+                        color: Pallet.CodGrayTextColor,
                         fontSize: 18),
                   ),
                   Text(
                     "@" +
                         widget.feedModel.user.userName.toString() +
                         " . 49 sec ago",
-                    style: TextStyle(color: CONSTANTS.lightGrayTextColor),
+                    style: TextStyle(color: Pallet.lightGrayTextColor),
                   ),
                 ],
               ),
@@ -100,7 +98,7 @@ class _FeedCardState extends State<FeedCard> {
                           postBloc.likeFeed();
                         },
                       ):IconButton(
-                        icon: Icon(Icons.favorite, color: CONSTANTS.primaryColor,),
+                        icon: Icon(Icons.favorite, color: Pallet.primaryColor,),
                         onPressed: (){
                           postBloc.dislikeFeed();
                         },
@@ -117,7 +115,7 @@ class _FeedCardState extends State<FeedCard> {
           margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Text(
             widget.feedModel.caption,
-            style: TextStyle(color: CONSTANTS.lightGrayTextColor, fontSize: 16),
+            style: TextStyle(color: Pallet.lightGrayTextColor, fontSize: 16),
           ),
         )
       ],
