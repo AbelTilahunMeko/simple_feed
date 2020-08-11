@@ -24,7 +24,7 @@ class _FeedCardState extends State<FeedCard> {
   @override
   void initState() {
     numberOfLikes = widget.feedModel.likes;
-    postBloc = PostBloc(widget.feedModel);
+    postBloc = PostBloc(model: widget.feedModel);
     super.initState();
   }
 
@@ -91,19 +91,27 @@ class _FeedCardState extends State<FeedCard> {
                 builder: (context, FeedModel snapshot) {
                   return Row(
                     children: <Widget>[
-                      !snapshot.isLiked?
-                      IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        onPressed: (){
-                          postBloc.likeFeed();
-                        },
-                      ):IconButton(
-                        icon: Icon(Icons.favorite, color: Pallet.primaryColor,),
-                        onPressed: (){
-                          postBloc.dislikeFeed();
-                        },
-                      ),
-                      Text(snapshot.likes.toString(), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+                      !snapshot.isLiked
+                          ? IconButton(
+                              icon: Icon(Icons.favorite_border),
+                              onPressed: () {
+                                postBloc.likeFeed();
+                              },
+                            )
+                          : IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                color: Pallet.primaryColor,
+                              ),
+                              onPressed: () {
+                                postBloc.dislikeFeed();
+                              },
+                            ),
+                      Text(
+                        snapshot.likes.toString(),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )
                     ],
                   );
                 },
@@ -122,5 +130,3 @@ class _FeedCardState extends State<FeedCard> {
     );
   }
 }
-
-

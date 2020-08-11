@@ -2,15 +2,16 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
+import 'package:simple_feed_app/bloc/feed/feed_repo_api_abstract.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
-class FeedApiRepo {
+class FeedApiRepo implements FeedApiRepository {
 
-
+  @override
   Future<AllFeeds> getAllFeeds(String pageNumber) async {
     try {
       Response response = await dio.get(CONSTANTS.feed + "$pageNumber");
@@ -24,7 +25,8 @@ class FeedApiRepo {
     }
   }
 
-  Future<Response> uploadFeedToDatabase(File file, String caption) async {
+  @override
+  Future<void> uploadFeedToDatabase(File file, String caption) async {
     String fileName = file.path.split('/').last;
     FormData formData =  FormData.fromMap({
       "image": await MultipartFile.fromFile(
@@ -45,6 +47,5 @@ class FeedApiRepo {
     if (response != null) {
       logger.d("I have succesfully uploaded the data");
     }
-    return response;
   }
 }
