@@ -1,13 +1,13 @@
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_feed_app/bloc/feed/like_feed_api_repository.dart';
+import 'package:simple_feed_app/bloc/feed/like_feed_api_abstract.dart';
 import 'package:simple_feed_app/model/feed_model.dart';
 
 class PostBloc extends Cubit<FeedModel> {
   String get feedId => state.id;
-  FeedLikeApiRepo _feedLikeApiRepo;
+  FeedLikeApiRepository _feedLikeApiRepo;
 
-  PostBloc({@required FeedModel model, @required FeedLikeApiRepo feedLikeApiRepo}):_feedLikeApiRepo = feedLikeApiRepo, super(model);
+  PostBloc({@required FeedModel model, @required FeedLikeApiRepository feedLikeApiRepo}):_feedLikeApiRepo = feedLikeApiRepo, super(model);
 
 
   likeFeed() async {

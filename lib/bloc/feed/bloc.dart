@@ -3,13 +3,12 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_feed_app/bloc/feed/feed_repo_api_abstract.dart';
-import 'package:simple_feed_app/bloc/feed/repo.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class FeedBloc extends Cubit<AllFeeds> {
   File imageFile;
-  final FeedApiRepo _feedApiRepo;
+  final FeedApiRepository _feedApiRepo;
 
   FeedBloc({FeedApiRepository feedApiRepository}): _feedApiRepo = feedApiRepository, super(null);
 

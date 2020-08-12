@@ -4,25 +4,26 @@ abstract class HttpClient {
   void addTokenToHeader(String token);
   void removeTokenToHeader();
 
-  Future<Response<T>> post<T>(
+  Future<T> post<T>(
     String path, {
     data,
     Map<String, dynamic> queryParameters,
     ProgressCallback onSendProgress,
     ProgressCallback onReceiveProgress,
   });
-  Future<Response<T>> get<T>(
+  Future<T> get<T>(
     String path, {
     Map<String, dynamic> queryParameters,
-    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
   });
-  Future<Response<T>> put<T>(
+  Future<T> put<T>(
     String path, {
+      data,
     Map<String, dynamic> queryParameters,
     ProgressCallback onSendProgress,
     ProgressCallback onReceiveProgress,
   });
-  Future<Response<T>> multiPartPost<T>(
+  Future<T> multiPartPost<T>(
     String path, {
     Map data,
     List files,
@@ -30,3 +31,4 @@ abstract class HttpClient {
     ProgressCallback progressCallback,
   });
 }
+

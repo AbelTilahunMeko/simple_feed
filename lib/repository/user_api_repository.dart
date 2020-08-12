@@ -2,14 +2,20 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
+import 'package:simple_feed_app/repository/user_api_repository_abstract.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
+import 'package:simple_feed_app/util/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
-class UserApiRepo{
+class UserApiRepo implements UserApiRepository{
+  final HttpClient _httpClient;
+  UserApiRepo({HttpClient httpClient}): assert(httpClient !=null), _httpClient = httpClient;
 
+  @override
   Future<UserModel> verifyUser(dataOfUser) async {
+
     try{
-      Response response = await dio.post(CONSTANTS.verifyAccount, data: dataOfUser);
+      Response response = await _httpClient.post(CONSTANTS.verifyAccount, data: dataOfUser);
       logger.d("Succesfully got the response " + response.data.toString());
       return UserModel.fromJson(response.data);
     }catch (error){
@@ -18,9 +24,10 @@ class UserApiRepo{
     }
   }
 
+  @override
   Future logoutUser() async {
     try{
-      Response response = await dio.post(CONSTANTS.logout);
+      Response response = await _httpClient.post(CONSTANTS.logout);
       logger.d("Succesfully logged out");
       return response.data;
     }catch(error){

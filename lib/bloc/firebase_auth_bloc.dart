@@ -62,7 +62,7 @@ class FirebaseAuthBloc {
       await _auth.signInWithCredential(authCredential).catchError((e){
         logger.d("There is an error " + e.toString());
       });
-      await DioProvider.instance.init();
+//      await DioProvider.instance.init();
       logger.d("########DONE DONE DONE SHould########");
 
 //      Get.to(HomePage());

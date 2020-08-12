@@ -7,15 +7,19 @@ import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:simple_feed_app/util/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class FeedApiRepo implements FeedApiRepository {
 
+  final HttpClient _httpClient;
+
+  FeedApiRepo({HttpClient httpClient}): assert (httpClient!=null), _httpClient = httpClient;
   @override
   Future<AllFeeds> getAllFeeds(String pageNumber) async {
     try {
-      Response response = await dio.get(CONSTANTS.feed + "$pageNumber");
-      return AllFeeds.fromJson(response.data);
+      var response = await _httpClient.get<Map>(CONSTANTS.feed + "$pageNumber");
+      return AllFeeds.fromJson(response);
     } catch (error, stacktrace) {
       logger.d("Error fetching " +
           error.toString() +
@@ -39,7 +43,7 @@ class FeedApiRepo implements FeedApiRepository {
 
     Response response;
     try {
-      response = await dio.post(CONSTANTS.post, data: formData);
+      response = await _httpClient.post(CONSTANTS.post, data: formData);
     } catch (error, stacktrace) {
       response = null;
       logger.d("There is an error uploading " + error.toString() + "\n####Stack" + stacktrace.toString());

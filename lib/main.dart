@@ -8,7 +8,6 @@ import 'package:simple_feed_app/util/dio_provider.dart';
 
 import 'commons/loading_widget.dart';
 
-
 void main() {
   runApp(GetMaterialApp(home: MyApp()));
 }
@@ -44,16 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return FutureBuilder(
-              future: DioProvider.instance.init(),
-              builder: (_, snapshot) {
-                if (!snapshot.hasData) {
-                  return Scaffold(
-                    body: LoadingWidget(),
-                  );
-                }
-                return HomePage();
-              });
+//          return FutureBuilder(
+//              future: DioProvider.instance.init(),
+//              builder: (_, snapshot) {
+//                if (!snapshot.hasData) {
+//                  return Scaffold(
+//                    body: LoadingWidget(),
+//                  );
+//                }
+//
+//              });
+          return HomePage();
         } else {
           return SignInPage();
         }
