@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 abstract class HttpClient {
-  void addTokenToHeader();
+  void addTokenToHeader(String token);
   void removeTokenToHeader();
 
   Future<Response<T>> post<T>(
