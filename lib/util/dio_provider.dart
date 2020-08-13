@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:meta/meta.dart';
 
+import 'package:simple_feed_app/config/constants.dart';
+import 'package:simple_feed_app/util/http_client.dart';
+
 class DioHttpClient implements HttpClient {
+  static const authorizationKey = "authorization";
+
   final Dio _dio;
 
   DioHttpClient({@required String baseUrl})
@@ -13,11 +17,14 @@ class DioHttpClient implements HttpClient {
 
   @override
   void addTokenToHeader(String token) {
-    _dio.options.headers["authorization"] = "Bearer $token";
+    _dio.options.headers[authorizationKey] = "Bearer $token";
   }
 
   @override
-  void removeTokenToHeader() {}
+  void removeTokenToHeader() {
+    _dio.options.headers.remove(authorizationKey);
+  }
+
   @override
   Future<T> get<T>(String path,
       {Map<String, dynamic> queryParameters, onReceiveProgress}) async {
@@ -32,7 +39,6 @@ class DioHttpClient implements HttpClient {
       Map<String, dynamic> queryParameters,
       onSendProgress,
       onReceiveProgress}) async {
-    // TODO: implement post
     var response = await _dio.post(path,
         data: data,
         queryParameters: queryParameters,
@@ -44,9 +50,11 @@ class DioHttpClient implements HttpClient {
   @override
   Future<T> put<T>(String path,
       {Map<String, dynamic> queryParameters,
-      onSendProgress, data,
+      onSendProgress,
+      data,
       onReceiveProgress}) async {
-    var response = await _dio.put(path, data: data,
+    var response = await _dio.put(path,
+        data: data,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
         queryParameters: queryParameters);
@@ -54,9 +62,27 @@ class DioHttpClient implements HttpClient {
   }
 
   @override
-  Future<T> multiPartPost<T>(String path,
-      {Map data, List files, String params = 'image', progressCallback}) {
-    // TODO: implement multiPartPost
-    throw UnimplementedError();
+  Future<T> multiPartPost<T>(
+    String path, {
+    @required Map data,
+    @required List files,
+    String tag = 'image',
+    progressCallback,
+  }) async {
+    FormData formData = FormData.fromMap(data);
+    for (var file in files) {
+      String fileName = file.path.split('/').last;
+      formData.files.add(
+        MapEntry(
+          tag,
+          await MultipartFile.fromFile(
+            file.path,
+            filename: fileName,
+            contentType: MediaType.parse("multipart/form-data"),
+          ),
+        ),
+      );
+    }
+    return post<T>(path, data: formData);
   }
 }

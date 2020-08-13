@@ -10,11 +10,14 @@ import 'package:http_parser/http_parser.dart';
 import 'package:simple_feed_app/util/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
-class FeedApiRepo implements FeedApiRepository {
+import '../../model/feed_model.dart';
 
+class FeedApiRepo implements FeedApiRepository {
   final HttpClient _httpClient;
 
-  FeedApiRepo({HttpClient httpClient}): assert (httpClient!=null), _httpClient = httpClient;
+  FeedApiRepo({HttpClient httpClient})
+      : assert(httpClient != null),
+        _httpClient = httpClient;
   @override
   Future<AllFeeds> getAllFeeds(String pageNumber) async {
     try {
@@ -30,26 +33,13 @@ class FeedApiRepo implements FeedApiRepository {
   }
 
   @override
-  Future<void> uploadFeedToDatabase(File file, String caption) async {
-    String fileName = file.path.split('/').last;
-    FormData formData =  FormData.fromMap({
-      "image": await MultipartFile.fromFile(
-        file.path,
-        filename: fileName,
-        contentType: MediaType.parse("multipart/form-data"),
-      ),
-      "caption": caption
-    });
-
-    Response response;
-    try {
-      response = await _httpClient.post(CONSTANTS.post, data: formData);
-    } catch (error, stacktrace) {
-      response = null;
-      logger.d("There is an error uploading " + error.toString() + "\n####Stack" + stacktrace.toString());
-    }
-    if (response != null) {
-      logger.d("I have succesfully uploaded the data");
+  Future<FeedModel> uploadFeedToDatabase(File file, String caption) async {
+    Map response = await _httpClient.multiPartPost<Map>(
+      CONSTANTS.post,
+      data: {"caption": caption},
+    );
+    if (response == null) {
+      throw Exception("data was null");
     }
   }
 }

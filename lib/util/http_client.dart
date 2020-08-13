@@ -18,7 +18,7 @@ abstract class HttpClient {
   });
   Future<T> put<T>(
     String path, {
-      data,
+    data,
     Map<String, dynamic> queryParameters,
     ProgressCallback onSendProgress,
     ProgressCallback onReceiveProgress,
@@ -27,8 +27,7 @@ abstract class HttpClient {
     String path, {
     Map data,
     List files,
-    String params = 'image',
+    String tag = 'image',
     ProgressCallback progressCallback,
   });
 }
-
