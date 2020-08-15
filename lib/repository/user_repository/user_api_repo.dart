@@ -1,25 +1,27 @@
 import 'package:meta/meta.dart';
+import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
-import 'package:simple_feed_app/repository/auth_api_repository_abstract.dart';
 import 'package:simple_feed_app/repository/user_repository/user_api_repository.dart';
 import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/logger.dart';
 
-class UserApiRepo implements UserApiRepository{
-  static const String userPath = '/users';
+class UserApiRepo implements UserApiRepository {
   final HttpClient _httpClient;
-  UserApiRepo({@required HttpClient httpClient}): assert(httpClient!=null), _httpClient = httpClient;
+  UserApiRepo({@required HttpClient httpClient})
+      : assert(httpClient != null),
+        _httpClient = httpClient;
 
   @override
   Future<UserModel> getUserProfile() async {
-    // TODO: implement getUserProfile
-    var data = await _httpClient.get<Map>(userPath);
+    var data = await _httpClient.get<Map>(CONSTANTS.baseURL + CONSTANTS.userPath);
     return UserModel.fromJson(data);
   }
 
   @override
-  Future updateUserProfile() {
-    // TODO: implement updateUserProfile
-    throw UnimplementedError();
+  Future updateUserProfile(data) async {
+    var updatedUserData =
+        await _httpClient.put( CONSTANTS.baseURL + CONSTANTS.updateProfile, data: data);
+    logger.d("The data " + updatedUserData.toString());
+    return UserModel.fromJson(updatedUserData);
   }
-
 }

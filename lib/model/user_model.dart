@@ -26,6 +26,7 @@ class UserModel {
     this.error,
     this.updatedAt});
 
+
   UserModel.fromJson(Map<String, dynamic> json)
       : posts = json['posts'],
         bio = json['bio'],
