@@ -2,14 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
-import 'package:simple_feed_app/repository/user_api_repository_abstract.dart';
+import 'package:simple_feed_app/repository/auth_api_repository_abstract.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
 import 'package:simple_feed_app/util/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
-class UserApiRepo implements UserApiRepository{
+class AuthApiRepo implements AuthApiRepository{
   final HttpClient _httpClient;
-  UserApiRepo({HttpClient httpClient}): assert(httpClient !=null), _httpClient = httpClient;
+  AuthApiRepo({HttpClient httpClient}): assert(httpClient !=null), _httpClient = httpClient;
 
   @override
   Future<UserModel> verifyUser(dataOfUser) async {

@@ -13,18 +13,18 @@ class UserModel {
   final String error;
 
   UserModel(
-      this.posts,
-      this.followers,
-      this.following,
-      this.id,
-      this.account,
-      this.userName,
-      this.name,
-      this.profilePic,
-      this.bio,
-      this.createdAt,
-      this.error,
-      this.updatedAt);
+  {this.posts,
+    this.followers,
+    this.following,
+    this.id,
+    this.account,
+    this.userName,
+    this.name,
+    this.profilePic,
+    this.bio,
+    this.createdAt,
+    this.error,
+    this.updatedAt});
 
   UserModel.fromJson(Map<String, dynamic> json)
       : posts = json['posts'],

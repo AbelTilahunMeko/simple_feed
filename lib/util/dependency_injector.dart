@@ -5,8 +5,8 @@ import 'package:simple_feed_app/bloc/feed/like_feed_api_abstract.dart';
 import 'package:simple_feed_app/bloc/feed/like_feed_api_repository.dart';
 import 'package:simple_feed_app/bloc/feed/repo.dart';
 import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/repository/user_api_repository.dart';
-import 'package:simple_feed_app/repository/user_api_repository_abstract.dart';
+import 'package:simple_feed_app/repository/auth_api_repository.dart';
+import 'package:simple_feed_app/repository/auth_api_repository_abstract.dart';
 import 'package:simple_feed_app/util/http_client.dart';
 
 import 'dio_provider.dart';
@@ -19,7 +19,7 @@ class DependencyInjection {
         DioHttpClient(baseUrl: CONSTANTS.baseURL));
 
     GetIt.instance
-        .registerSingleton<UserApiRepository>(UserApiRepo(httpClient: getIt()));
+        .registerSingleton<AuthApiRepository>(AuthApiRepo(httpClient: getIt()));
 
     GetIt.instance.registerSingleton<FeedLikeApiRepository>(
         FeedLikeApiRepo(httpClient: getIt()));
