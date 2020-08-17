@@ -7,7 +7,7 @@ import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/all_feeds_model.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 import '../../model/feed_model.dart';

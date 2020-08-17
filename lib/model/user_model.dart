@@ -1,3 +1,80 @@
+import 'package:meta/meta.dart';
+class UpdateProfilePayload{
+  final String bio;
+  final String name;
+  final String username;
+
+//<editor-fold desc="Data Methods" defaultstate="collapsed">
+
+
+  const UpdateProfilePayload({
+    @required this.bio,
+    @required this.name,
+    @required this.username,
+  });
+
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          (other is UpdateProfilePayload &&
+              runtimeType == other.runtimeType &&
+              bio == other.bio &&
+              name == other.name &&
+              username == other.username
+          );
+
+
+  @override
+  int get hashCode =>
+      bio.hashCode ^
+      name.hashCode ^
+      username.hashCode;
+
+
+  @override
+  String toString() {
+    return 'UpdateProfilePayload{' +
+        ' bio: $bio,' +
+        ' name: $name,' +
+        ' username: $username,' +
+        '}';
+  }
+
+
+  UpdateProfilePayload copyWith({
+    String bio,
+    String name,
+    String username,
+  }) {
+    return new UpdateProfilePayload(
+      bio: bio ?? this.bio,
+      name: name ?? this.name,
+      username: username ?? this.username,
+    );
+  }
+
+
+  Map<String, dynamic> toJson() {
+    return {
+      'bio': this.bio,
+      'name': this.name,
+      'username': this.username,
+    };
+  }
+
+  factory UpdateProfilePayload.fromJson(Map<String, dynamic> map) {
+    return new UpdateProfilePayload(
+      bio: map['bio'] as String,
+      name: map['name'] as String,
+      username: map['username'] as String,
+    );
+  }
+
+
+//</editor-fold>
+}
+
 class UserModel {
   final int posts;
   final int followers;

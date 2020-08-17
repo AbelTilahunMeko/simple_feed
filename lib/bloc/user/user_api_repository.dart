@@ -2,5 +2,5 @@ import 'package:simple_feed_app/model/user_model.dart';
 
 abstract class UserApiRepository{
   Future<UserModel> getUserProfile();
-  Future updateUserProfile(data);
+  Future<UserModel> updateUserProfile(UpdateProfilePayload data);
 }

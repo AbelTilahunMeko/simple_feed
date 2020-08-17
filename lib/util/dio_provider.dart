@@ -4,7 +4,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:meta/meta.dart';
 
 import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 
 class DioHttpClient implements HttpClient {
   static const authorizationKey = "authorization";

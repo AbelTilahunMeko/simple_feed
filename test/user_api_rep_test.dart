@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
-import 'package:simple_feed_app/repository/user_repository/user_api_repo.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/bloc/user/user_api_repo.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 
 import 'placehoder_data/user_response_data.dart';
 
@@ -25,14 +25,13 @@ void main() {
   });
 
   test("Update user profile", () async {
-    Map<String, dynamic> data = {"bio": "I am the bio", "name": "Abel", "username": "beltm"};
-    var body = json.encode(data);
+    UpdateProfilePayload body = UpdateProfilePayload(name: "abel", username: "beltm", bio: "I'm the bio");
 
     when(mockHttpClient.put(CONSTANTS.baseURL + CONSTANTS.updateProfile,
             data: body))
-        .thenAnswer((_) async => data);
+        .thenAnswer((_) async => body.toJson());
     var repo = UserApiRepo(httpClient: mockHttpClient);
     UserModel updatedProfile = await repo.updateUserProfile(body);
-    expect(updatedProfile.name, "Abel");
+    expect(updatedProfile.name, "abel");
   });
 }

@@ -4,7 +4,7 @@ import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
 import 'package:simple_feed_app/repository/auth_api_repository_abstract.dart';
 import 'package:simple_feed_app/util/dio_provider.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class AuthApiRepo implements AuthApiRepository{

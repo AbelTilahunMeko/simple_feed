@@ -1,6 +1,6 @@
 import 'package:simple_feed_app/bloc/feed/like_feed_api_abstract.dart';
 import 'package:simple_feed_app/config/constants.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class FeedLikeApiRepo implements FeedLikeApiRepository {

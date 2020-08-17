@@ -7,7 +7,7 @@ import 'package:simple_feed_app/bloc/feed/repo.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/repository/auth_api_repository.dart';
 import 'package:simple_feed_app/repository/auth_api_repository_abstract.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 
 import 'dio_provider.dart';
 

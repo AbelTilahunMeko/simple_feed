@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:simple_feed_app/config/constants.dart';
 import 'package:simple_feed_app/model/user_model.dart';
-import 'package:simple_feed_app/repository/user_repository/user_api_repository.dart';
-import 'package:simple_feed_app/util/http_client.dart';
+import 'package:simple_feed_app/bloc/user/user_api_repository.dart';
+import 'package:simple_feed_app/util/http_client/http_client.dart';
 import 'package:simple_feed_app/util/logger.dart';
 
 class UserApiRepo implements UserApiRepository {
@@ -18,7 +18,7 @@ class UserApiRepo implements UserApiRepository {
   }
 
   @override
-  Future updateUserProfile(data) async {
+  Future<UserModel> updateUserProfile(UpdateProfilePayload data) async {
     var updatedUserData =
         await _httpClient.put( CONSTANTS.baseURL + CONSTANTS.updateProfile, data: data);
     logger.d("The data " + updatedUserData.toString());
